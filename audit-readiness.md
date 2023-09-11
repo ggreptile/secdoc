@@ -31,6 +31,7 @@ Tactic:
 extra time in meetings and communication overhead generally.
 * Take advantage of Rust docs where possible
 * Ensure darkfi book is up-to-date and accurate
+* Glossary of terms in the codebase that are new or have a special meaning
 
 ### Automated Testing
 * Add robust unit testing
@@ -70,6 +71,18 @@ When converting to types with different sizes, mathematical and logical issues c
 Check mathematical operations to ensure they fall within the expected bounds of their types. Add error handling to check for this.
 Avoid converting between types where possible. Be consistent.
 Use "checked" math functions (e.g. [checked_add in u32](https://doc.rust-lang.org/std/primitive.u32.html#method.checked_add))
+
+### Arithmetic issues due to rounding
+
+### Problem
+Depending on the types and operations done in the code, rounding may be necessary when performing
+tasks such as calculating funds.
+If done inconsistently, this can cause loss of funds.
+
+### Solution
+Round up or down consistently across the codebase to avoid disagreement.
+
+### Solution
 
 ### Non-determinism due to floating point arithmetic
 
